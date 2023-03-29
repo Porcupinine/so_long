@@ -1,0 +1,4 @@
+/snap/clion/229/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/snap/clion/229/bin/ninja/linux/x64/ninja -G Ninja -S /sam/Codam/so_long -B /sam/Codam/so_long/cmake-build-debug
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /sam/Codam/so_long/cmake-build-debug
