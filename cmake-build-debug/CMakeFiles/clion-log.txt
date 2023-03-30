@@ -1,0 +1,4 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -S /Users/lpraca-l/Documents/CodamGit/so_long -B /Users/lpraca-l/Documents/CodamGit/so_long/cmake-build-debug
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/lpraca-l/Documents/CodamGit/so_long/cmake-build-debug

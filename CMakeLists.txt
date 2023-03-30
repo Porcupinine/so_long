@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.23.2)
 project(so_long C)
 
 set(CMAKE_C_STANDARD 90)
 
-add_executable(so_long main.c src/map/validate_map.c)
+add_executable(so_long main.c src/map/validate_map.c include/map.h)
