@@ -1,0 +1,6 @@
+[submodule "MLX42"]
+	path = MLX42
+	url = https://github.com/codam-coding-college/MLX42.git
+[submodule "lib42"]
+	path = lib42
+	url = https://github.com/Porcupinine/Lib42.git
