@@ -15,11 +15,23 @@
 #define SO_LONG_MAP_H
 
 
-typedef struct t_list
-{
-    int	width;
-    int	height;
-    t_list *next;
+//typedef struct fish
+//{
+//    size_t x;
+//	size_t y;
+//    fish *next;
+//
+//}fish;
 
-}collectables;
+typedef struct game_map
+{
+	size_t height;
+	size_t width;
+	char **map;
+
+}game_map;
+
+void get_map(char *argv, game_map *map);
+void print_map(game_map *map);
+
 #endif //SO_LONG_MAP_H
