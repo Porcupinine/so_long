@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.23.2)
+cmake_minimum_required(VERSION 3.21.0)
 project(so_long C)
 
 set(CMAKE_C_STANDARD 90)
