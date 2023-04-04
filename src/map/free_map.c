@@ -17,55 +17,31 @@
 #include "../../lib42/include/libft.h"
 #include "../../include/map.h"
 
-static void map_x_size(game_map *map)
+
+//static int	string_malloc_fail(char **arr, int count_arr)
+//{
+//	if (arr[count_arr] == NULL)
+//	{
+//		while (count_arr >= 0)
+//		{
+//			free(arr[count_arr]);
+//			count_arr--;
+//		}
+//		free(arr);
+//		return (0);
+//	}
+//	return (1);
+//}
+
+int free_fail_map(game_map *map, int count)
 {
-	char *line;
-	int count;
-
-	count = 0;
-	while (map->map[0][count] != '\n')
-		count++;
-	map->width = count;
-}
-
-static void map_y_size(char *argv, game_map *map)
-{
-	int count;
-	char *line;
-	int fd;
-
-	count = 0;
-	fd = open(argv, O_RDONLY);
-	line = get_next_line(fd);
-	while (line != NULL)
-	{
-		count++;
-		free(line);
-		line = get_next_line(fd);
+	if (map->map[count] == NULL) {
+		while (count >= 0) {
+			free(map->map[count]);
+			count--;
+		}
+		free(map->map);
+		return (0);
 	}
-	map->height = count;
-	close(fd);
-}
-
-void get_map(char *argv, game_map *map)
-{
-	int fd;
-	int count;
-	char *line;
-
-	count = 0;
-	map_y_size(argv, map);
-	map->map = malloc(map->height * sizeof(char *));
-	if (map->map == NULL)
-		return;
-	fd = open(argv, O_RDONLY);
-	line = get_next_line(fd);
-	while (line != NULL)
-	{
-		map->map[count] = line;
-		line = get_next_line(fd);
-		count++;
-	}
-	close(fd);
-	map_x_size(map);
+	return(1);
 }

@@ -7,18 +7,14 @@ RUN apt-get update \
     gcc \
     g++ \
     gdb \
-    clang \
     cmake \
     rsync \
     tar \
     libglfw3-dev \
     libglfw3 \
+    python3 \
+    python3-pip \
   && apt-get clean
+RUN pip install conan==1.59.0
 
 WORKDIR /app
-COPY . .
-
-RUN mkdir build
-WORKDIR /app/build
-CMD ["cmake", ".."]
-ENTRYPOINT ["make", "test_so_long"]
