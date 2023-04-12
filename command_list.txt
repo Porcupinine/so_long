@@ -1,0 +1,2 @@
+docker build -t cpp-ubuntu-gcc .
+docker run --rm -it --entrypoint bash cpp-ubuntu-gcc

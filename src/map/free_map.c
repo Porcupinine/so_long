@@ -12,7 +12,7 @@
 
 #include <fcntl.h>
 #include <unistd.h>
-#include "../../lib42/include/get_next_line.h"
+#include "get_next_line.h"
 #include "../../lib42//include/ft_printf.h"
 #include "../../lib42/include/libft.h"
 #include "../../include/map.h"

@@ -12,7 +12,7 @@
 
 #include <fcntl.h>
 #include <unistd.h>
-#include "../../lib42/include/get_next_line.h"
+#include "get_next_line.h"
 #include "../../lib42//include/ft_printf.h"
 #include "../../lib42/include/libft.h"
 #include "../../include/map.h"
@@ -45,6 +45,19 @@ static void map_y_size(char *argv, game_map *map)
 	}
 	map->height = count;
 	close(fd);
+}
+
+void add_collectable(collectable **head, size_t x, size_t y)
+{
+	collectable *fish;
+
+	fish = malloc( 1 * sizeof(collectable));
+	if (fish == NULL)
+		return ;
+	fish->x = x;
+	fish->y = y;
+	fish->next = *head;
+	*head = fish;
 }
 
 void get_map(char *argv, game_map *map)

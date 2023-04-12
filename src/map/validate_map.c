@@ -15,6 +15,8 @@
 #include "libft.h"
 #include "../../lib42/include/ft_printf.h"
 
+// some can be void and check value on the struct latter
+
 int check_shape(game_map *map)
 {
 	size_t y;
@@ -63,25 +65,23 @@ int check_exit(game_map *map)
 	size_t count_y;
 
 	exit = 0;
-	count_x = 0;
-	count_y = 0;
-	while (count_y < map->height)
+	count_x = -1;
+	count_y = -1;
+	while (++count_y < map->height)
 	{
-		while (count_x < (map->width))
+		while (++count_x < (map->width))
 		{
 			if (map->map[count_y][count_x] == 'E')
 			{
-				if (exit == 1)
-					return (ft_printf("ERROR Multiple exits\n"), 1);
-				exit = 1;
+				map->exit_x = count_x;
+				map->exit_y = count_y;
+				exit++;
 			}
-			count_x++;
 		}
 		count_x = 0;
-		count_y++;
 	}
-	if (exit == 0)
-		return (ft_printf("ERROR No exit found\n"), 1);
+	if (exit == 0 || exit > 1)
+		return (ft_printf("ERROR Wrong amount of exits\n"), 1);
 	return (0);
 }
 
@@ -92,50 +92,48 @@ int check_player(game_map *map)
 	size_t count_y;
 
 	player = 0;
+	count_x = -1;
+	count_y = -1;
+	while (++count_y < map->height)
+	{
+		while (++count_x < (map->width))
+		{
+			if (map->map[count_y][count_x] == 'P')
+			{
+				player++;
+				map->player_x = count_x;
+				map->player_y = count_y;
+			}
+		}
+		count_x = 0;
+	}
+	if (player == 0 || player > 1)
+		return (ft_printf("ERROR wrong amount of players\n"), 1);
+	return (0);
+}
+
+int check_collectables(game_map *map, collectable **fish)
+{
+	size_t count_x;
+	size_t count_y;
+
 	count_x = 0;
 	count_y = 0;
-
 	while (count_y < map->height)
 	{
 		while (count_x < (map->width))
 		{
-			if (map->map[count_y][count_x] == 'P')
+			if (map->map[count_y][count_x] == 'C')
 			{
-				if (player == 1)
-					return (ft_printf("ERROR Multiple players\n"), 1);
-				player = 1;
+				add_collectable(fish, count_x, count_y);
+				map->collectables++;
 			}
 			count_x++;
 		}
 		count_x = 0;
 		count_y++;
 	}
-	if (player == 0)
-		return (ft_printf("ERROR No player found\n"), 1);
-	return (0);
-}
-
-int check_collectables(game_map *map)
-{
-	int collectables;
-	size_t count_x;
-	size_t count_y;
-
-	collectables = 0;
-	count_x = 0;
-	count_y = 0;
-
-	while (count_y < map->height)
-	{
-		while (count_x < (map->width)) {
-			if (map->map[count_y][count_x] == 'C')
-				collectables++;
-			count_x++;
-		}
-		count_x = 0;
-		count_y++;
-	}
-	if (collectables == 0)
+	if (map->collectables == 0)
 		return (ft_printf("ERROR No collectables\n"), 1);
 	return (0);
 }

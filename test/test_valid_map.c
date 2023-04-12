@@ -83,25 +83,27 @@ int test_players(void)
 
 int test_collectables(void)
 {
+	collectable *fish;
+
 	game_map map;
 	get_map("../maps/no_exit.ber", &map);
 	print_map(&map);
-	check_collectables(&map);
+	check_collectables(&map, fish);
 
 	game_map map1;
 	get_map("../maps/not_a_box.ber", &map1);
 	print_map(&map1);
-	check_collectables(&map1);
+	check_collectables(&map1, fish);
 
 	game_map map2;
 	get_map("../maps/too_many_exits.ber", &map2);
 	print_map(&map2);
-	check_collectables(&map2);
+	check_collectables(&map2, fish);
 
 	game_map map3;
 	get_map("../maps/simple_valid_map.ber", &map3);
 	print_map(&map3);
-	check_collectables(&map3);
+	check_collectables(&map3, fish);
 
 	return (0);
 }

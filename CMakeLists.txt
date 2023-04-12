@@ -18,14 +18,14 @@ SET(SOURCES
     src/map/make_map.c
     src/map/free_map.c
     src/map/print.c
-    )
+        src/map/check_path.c)
 
 add_executable(so_long main.c ${SOURCES})
 set_target_properties(so_long PROPERTIES LINKER_LANGUAGE C)
-target_link_libraries(so_long ${CMAKE_SOURCE_DIR}/lib42/libft.a)
+target_link_libraries(so_long ${CMAKE_SOURCE_DIR}/lib42/libft.a mlx42)
 
 
-add_executable(test_so_long src/map/validate_map.c include/map.h src/map/make_map.c test/test_read_map.c test/test_main.c src/map/free_map.c src/map/print.c test/test_valid_map.c)
+add_executable(test_so_long src/map/validate_map.c include/map.h src/map/make_map.c test/test_read_map.c test/test_main.c src/map/free_map.c src/map/print.c test/test_valid_map.c test/test_map_data.c)
 target_link_libraries(test_so_long ${CMAKE_SOURCE_DIR}/lib42/libft.a)
 
 set(TEST_SOURCES
