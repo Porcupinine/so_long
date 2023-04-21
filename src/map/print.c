@@ -42,7 +42,7 @@ void print_map_data(game_map *map, collectable *fish)
 	ft_printf("Amount of collectables: %d\n", map->collectables);
 	while (fish != NULL)
 	{
-		ft_printf("fish %d: (%d, %d)\n", count, fish->x, fish->y);
+		ft_printf("fish %d: (%d, %d) status: %d\n", count, fish->x, fish->y, fish->status);
 		fish = fish->next;
 		count++;
 	}

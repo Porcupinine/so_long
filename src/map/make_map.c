@@ -47,7 +47,7 @@ static void map_y_size(char *argv, game_map *map)
 	close(fd);
 }
 
-void add_collectable(collectable **head, size_t x, size_t y)
+void add_collectable(collectable **head, int32_t x, int32_t y)
 {
 	collectable *fish;
 
@@ -56,6 +56,7 @@ void add_collectable(collectable **head, size_t x, size_t y)
 		return ;
 	fish->x = x;
 	fish->y = y;
+	fish->status = 0;
 	fish->next = *head;
 	*head = fish;
 }

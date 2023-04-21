@@ -14,23 +14,25 @@
 #define SO_LONG_MAP_H
 
 #include <stdio.h>
+#include <stdint.h>
 
 typedef struct game_map
 {
-	size_t height;
-	size_t width;
+	int32_t height;
+	int32_t width;
 	char **map;
-	size_t exit_x;
-	size_t exit_y;
-	size_t player_x;
-	size_t player_y;
-	size_t collectables;
+	int32_t exit_x;
+	int32_t exit_y;
+	int32_t player_x;
+	int32_t player_y;
+	int32_t collectables;
 }game_map;
 
 typedef struct collectable
 {
-	size_t x;
-	size_t y;
+	int status;
+	int32_t x;
+	int32_t y;
 	struct collectable *next;
 }collectable;
 
@@ -54,8 +56,11 @@ void print_map_data(game_map *map, collectable *fish);
  * @param map map struct
  */
 void get_map(char *argv, game_map *map);
-void add_collectable(collectable **head, size_t x, size_t y);
+void add_collectable(collectable **head, int32_t x, int32_t y);
 //---------------------------------------------------------------validate_map.c
+int validate_map(game_map *map, collectable **fish);
+
+//------------------------------------------------------------------check_map.c
 /**
  * Check if givem map is rectangular
  * @param map map struct

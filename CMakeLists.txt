@@ -18,7 +18,7 @@ SET(SOURCES
     src/map/make_map.c
     src/map/free_map.c
     src/map/print.c
-        src/map/check_path.c)
+        src/map/check_path.c src/graphics/draw_map.c lib42/libft_src/ft_error.c src/utils/free.c src/graphics/load_images.c include/graphics.h src/map/check_map.c)
 
 add_executable(so_long main.c ${SOURCES})
 set_target_properties(so_long PROPERTIES LINKER_LANGUAGE C)
