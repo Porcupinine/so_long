@@ -112,7 +112,7 @@ int check_player(game_map *map)
 	return (0);
 }
 
-int check_collectables(game_map *map, collectable **fish)
+int check_collectables(game_map *map)
 {
 	int32_t count_x;
 	int32_t count_y;
@@ -125,15 +125,15 @@ int check_collectables(game_map *map, collectable **fish)
 		{
 			if (map->map[count_y][count_x] == 'C')
 			{
-				add_collectable(fish, count_x, count_y);
-				map->collectables++;
+				add_collectable(&map->fish, count_x, count_y);
+				map->collectable_count++;
 			}
 			count_x++;
 		}
 		count_x = 0;
 		count_y++;
 	}
-	if (map->collectables == 0)
+	if (map->collectable_count == 0)
 		return (ft_printf("ERROR No collectables\n"), 1);
 	return (0);
 }

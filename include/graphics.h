@@ -17,6 +17,6 @@ void draw_wall(mlx_t* mlx, int32_t x, int32_t y);
 
 //-------------------------------------------------------------------draw_map.c
 
-void draw_map(mlx_t* mlx, game_map *map, collectable *fish);
+void draw_map(mlx_t* mlx, game_map *map);
 
 #endif //SO_LONG_GRAPHICS_H

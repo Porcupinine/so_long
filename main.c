@@ -23,17 +23,17 @@ static void error(void)
 int32_t	main(void)
 {
 	game_map  map;
-	collectable *fish;
+//	collectable *fish;
 
-	get_map("maps/simple_valid_map.ber", &map);
-	if (validate_map(&map, &fish) == 1)
+	get_map("maps/large_valid_enemy.ber", &map);
+	if (validate_map(&map) == 1)
 		exit(1);
 	// Start mlx
 	mlx_t* mlx = mlx_init(map.width * SIZE, map.height * SIZE, "Test", true);
 	if (!mlx)
 		error();
 
-	draw_map(mlx, &map, fish);
+	draw_map(mlx, &map);
 	// Try to load the file
 //	mlx_texture_t* texture = mlx_load_png("images/dolgr.png");
 //	if (!texture)
@@ -56,5 +56,37 @@ int32_t	main(void)
 	return (EXIT_SUCCESS);
 }
 
-
-//liberar o mapa
+//#include <stdlib.h>
+//#include <stdio.h>
+//#include <stdio.h>
+//#include "MLX42/MLX42.h"
+//#define WIDTH 720
+//#define HEIGHT 480
+//
+//void my_keyhook(mlx_key_data_t keydata, void* param)
+//{
+//	// If we PRESS the 'J' key, print "Hello".
+//	if (keydata.key == MLX_KEY_J && keydata.action == MLX_PRESS)
+//		puts("Hello ");
+//
+//	// If we RELEASE the 'K' key, print "World".
+//	if (keydata.key == MLX_KEY_K && keydata.action == MLX_RELEASE)
+//		puts("World");
+//
+//	// If we HOLD the 'L' key, print "!".
+//	if (keydata.key == MLX_KEY_L && keydata.action == MLX_REPEAT)
+//		puts("!");
+//}
+//
+//int32_t	main(void)
+//{
+//	mlx_t* mlx;
+//
+//	if (!(mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true)))
+//		return (EXIT_FAILURE);
+//
+//	mlx_key_hook(mlx, &my_keyhook, NULL);
+//	mlx_loop(mlx);
+//	mlx_terminate(mlx);
+//	return (EXIT_SUCCESS);
+//}

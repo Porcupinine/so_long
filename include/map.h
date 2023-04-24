@@ -16,6 +16,14 @@
 #include <stdio.h>
 #include <stdint.h>
 
+typedef struct collectable
+{
+	int status;
+	int32_t x;
+	int32_t y;
+	struct collectable *next;
+}collectable;
+
 typedef struct game_map
 {
 	int32_t height;
@@ -25,16 +33,9 @@ typedef struct game_map
 	int32_t exit_y;
 	int32_t player_x;
 	int32_t player_y;
-	int32_t collectables;
+	int32_t collectable_count;
+	collectable *fish;
 }game_map;
-
-typedef struct collectable
-{
-	int status;
-	int32_t x;
-	int32_t y;
-	struct collectable *next;
-}collectable;
 
 //----------------------------------------------------------------------print.c
 /**
@@ -58,7 +59,7 @@ void print_map_data(game_map *map, collectable *fish);
 void get_map(char *argv, game_map *map);
 void add_collectable(collectable **head, int32_t x, int32_t y);
 //---------------------------------------------------------------validate_map.c
-int validate_map(game_map *map, collectable **fish);
+int validate_map(game_map *map);
 
 //------------------------------------------------------------------check_map.c
 /**
@@ -92,8 +93,9 @@ int check_player(game_map *map);
  * @param fish collectables struct
  * @return 0 if there are collectables, 1 if there are no collectables
  */
-int check_collectables(game_map *map, collectable **fish);
+int check_collectables(game_map *map);
 //--------------------------------------------------------------free_fail_map.c
 int free_fail_map(game_map *map, int count);
 
+int find_collectable(collectable *fish, int32_t x, int32_t y);
 #endif //SO_LONG_MAP_H

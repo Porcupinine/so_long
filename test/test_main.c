@@ -13,6 +13,7 @@ int main(int argc, char **argv)
 //	test_exit();
 //	test_players();
 //	test_collectables();
-	test_map_data();
+//	test_map_data();
+	test_fish_status();
 	return(0);
 }

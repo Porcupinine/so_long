@@ -12,6 +12,6 @@ int test_exit(void);
 int test_players(void);
 int test_collectables(void);
 void test_map_data(void);
-
+void test_fish_status(void);
 
 #endif //SO_LONG_TEST_H

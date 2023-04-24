@@ -7,13 +7,14 @@
 #include "../../include/map.h"
 #include "../../include/graphics.h"
 
-void draw_map(mlx_t* mlx, game_map *map, collectable *fish)
+void draw_map(mlx_t* mlx, game_map *map)
 {
 	int x;
 	int y;
 
 	x = 0;
 	y = 0;
+	draw_ground(mlx, x, y);
 	while (y < map->height)
 	{
 		while (x < map->width)
@@ -24,9 +25,9 @@ void draw_map(mlx_t* mlx, game_map *map, collectable *fish)
 //				draw_ground(mlx, x, y);
 			if (map->map[y][x] == 'E')
 				draw_exit(mlx, x, y);
-			if (map->map[y][x] == 'C' && fish->status == 0)
+			if (map->map[y][x] == 'C' && find_collectable(map->fish, x, y) == 0)
 			{
-				draw_ground(mlx, x, y);
+//				draw_ground(mlx, x, y);
 				draw_collectable(mlx, x, y);
 			}
 			x++;
