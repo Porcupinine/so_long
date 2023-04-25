@@ -16,7 +16,7 @@ void test_fish_status(void)
 		while (x < map.width)
 		{
 			if (map.map[y][x] == 'C')
-				ft_printf("status: %d\n", find_collectable(map.fish, x, y));
+				ft_printf("status: %d\n", (find_collectable(map.fish, x, y))->status);
 			x++;
 		}
 		x = 0;

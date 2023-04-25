@@ -15,6 +15,7 @@
 
 #include <stdio.h>
 #include <stdint.h>
+#include "../MLX42/include/MLX42/MLX42.h"
 
 typedef struct collectable
 {
@@ -26,6 +27,7 @@ typedef struct collectable
 
 typedef struct game_map
 {
+	mlx_t *mlx;
 	int32_t height;
 	int32_t width;
 	char **map;
@@ -97,5 +99,5 @@ int check_collectables(game_map *map);
 //--------------------------------------------------------------free_fail_map.c
 int free_fail_map(game_map *map, int count);
 
-int find_collectable(collectable *fish, int32_t x, int32_t y);
+collectable *find_collectable(collectable *fish, int32_t x, int32_t y);
 #endif //SO_LONG_MAP_H

@@ -13,7 +13,7 @@ void draw_wall(mlx_t* mlx, int32_t x, int32_t y)
 	mlx_texture_t* texture_wall;
 	mlx_image_t* img_wall;
 
-	texture_wall = mlx_load_png("images/rock3.png");
+	texture_wall = mlx_load_png("images/rockbrounish.png");
 	if (!texture_wall)
 		ft_error("Texture fail\n"); //free shit
 	img_wall = mlx_texture_to_image(mlx, texture_wall);
@@ -43,7 +43,7 @@ void draw_ground(mlx_t* mlx, int32_t x, int32_t y)
 	mlx_texture_t* texture_ground;
 	mlx_image_t* img_ground;
 
-	texture_ground = mlx_load_png("images/bg.png");
+	texture_ground = mlx_load_png("images/bg2.png");
 	if (!texture_ground)
 		ft_error("Texture fail\n"); //free shit
 	img_ground = mlx_texture_to_image(mlx, texture_ground);
@@ -58,7 +58,7 @@ void draw_exit(mlx_t* mlx, int32_t x, int32_t y)
 	mlx_texture_t* texture_exit;
 	mlx_image_t* img_exit;
 
-	texture_exit = mlx_load_png("images/dolgr.png");
+	texture_exit = mlx_load_png("images/meh.png");
 	if (!texture_exit)
 		ft_error("Texture fail\n"); //free shit
 	img_exit = mlx_texture_to_image(mlx, texture_exit);
@@ -70,15 +70,15 @@ void draw_exit(mlx_t* mlx, int32_t x, int32_t y)
 
 void draw_player(mlx_t* mlx, int32_t x, int32_t y)
 {
-	mlx_texture_t* texture_exit;
-	mlx_image_t* img_exit;
+	mlx_texture_t* texture_player;
+	mlx_image_t* img_player;
 
-	texture_exit = mlx_load_png("images/dolgr.png");
-	if (!texture_exit)
+	texture_player = mlx_load_png("images/dolgr.png");
+	if (!texture_player)
 		ft_error("Texture fail\n"); //free shit
-	img_exit = mlx_texture_to_image(mlx, texture_exit);
-	if (!img_exit)
+	img_player = mlx_texture_to_image(mlx, texture_player);
+	if (!img_player)
 		ft_error("Image fail\n"); //free shit
-	if (mlx_image_to_window(mlx, img_exit, x * SIZE, y * SIZE) < 0)
+	if (mlx_image_to_window(mlx, img_player, x * SIZE, y * SIZE) < 0)
 		ft_error("Fail\n");
 }
