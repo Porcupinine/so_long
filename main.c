@@ -6,33 +6,28 @@
 #include "MLX42/include/MLX42/MLX42.h"
 #include "MLX42/include/MLX42/MLX42_Int.h"
 #include "include/graphics.h"
+#include "libft.h"
 
 #define WIDTH 256
 #define HEIGHT 256
 #define SIZE 65
-
-static void error(void)
-{
-	puts(mlx_strerror(mlx_errno));
-	exit(EXIT_FAILURE);;
-}
 
 int32_t	main(void)
 {
 	game_map  map;
 //	collectable *fish;
 
-	get_map("maps/valid_larg_map.ber", &map);
-	if (validate_map(&map) == 1)
-		exit(1);
+	get_map("maps/no_collectables.ber", &map);
+//    print_map(&map);
+	validate_map(&map);
 	// Start mlx
 	map.mlx = mlx_init(map.width * SIZE, map.height * SIZE, "Test", true);
 	if (!map.mlx)
-		error();
+		ft_error("MLX42 init fail\n");
 
 	draw_map(&map);
+//    init_player(&map);
 
-	mlx_loop_hook(map.mlx, ,&map);
 	mlx_key_hook(map.mlx, &move_player, &map);
 	mlx_loop(map.mlx);
 

@@ -23,7 +23,7 @@ SET(SOURCES
         src/map/check_map.c src/move/keys.c src/map/find_collectable.c
         src/map/remove_collectable.c)
 
-add_executable(so_long main.c ${SOURCES})
+add_executable(so_long main.c ${SOURCES} src/map/init_map.c)
 set_target_properties(so_long PROPERTIES LINKER_LANGUAGE C)
 target_link_libraries(so_long ${CMAKE_SOURCE_DIR}/lib42/libft.a mlx42)
 

@@ -17,7 +17,7 @@
 
 // some can be void and check value on the struct latter
 
-int check_shape(game_map *map)
+void check_shape(game_map *map)
 {
 	int32_t y;
 	int32_t x;
@@ -29,14 +29,14 @@ int check_shape(game_map *map)
 		while (map->map[y][x] != '\n' && map->map[y][x] != '\0')
 			x++;
 		if (x != map->width)
-			return (ft_printf("MAP ERROR not rectangular\n"), 1);
+            ft_error("Map is not rectangular\n");
 		x = 0;
 		y++;
 	}
-	return (0);
+//	return (0);
 }
 
-int check_borders(game_map *map)
+void check_borders(game_map *map)
 {
 	int32_t count_x;
 	int32_t count_y;
@@ -46,19 +46,19 @@ int check_borders(game_map *map)
 	while (count_x < (map->width))
 	{
 		if (map->map[0][count_x] != '1'|| map->map[map->height-1][count_x] != '1')
-			return (ft_printf("ERROR Not surrounded\n"), 1);
+            ft_error("Map not surrounded\n");
 		count_x++;
 	}
 	while (count_y < map->height)
 	{
 		if (map->map[count_y][0] != '1' || map->map[count_y][map->width -1] != '1' )
-			return (ft_printf("ERROR Not surrounded\n"), 1);
+            ft_error("Map not surrounded\n");
 		count_y++;
 	}
-	return (0);
+//	return (0);
 }
 
-int check_exit(game_map *map)
+void check_exit(game_map *map)
 {
 	int exit;
 	int32_t count_x;
@@ -81,17 +81,20 @@ int check_exit(game_map *map)
 		count_x = 0;
 	}
 	if (exit == 0 || exit > 1)
-		return (ft_printf("ERROR Wrong amount of exits\n"), 1);
-	return (0);
+        ft_error("Wrong amount of exits\n");
+//	return (0);
 }
 
-int check_player(game_map *map)
+void check_player(game_map *map)
 {
-	int player;
+	int player_count;
 	int32_t count_x;
 	int32_t count_y;
 
-	player = 0;
+    map->player = malloc(1 * sizeof (player_data));
+    if(map->player == NULL)
+        return (1);
+    player_count = 0;
 	count_x = -1;
 	count_y = -1;
 	while (++count_y < map->height)
@@ -100,19 +103,19 @@ int check_player(game_map *map)
 		{
 			if (map->map[count_y][count_x] == 'P')
 			{
-				player++;
-				map->player_x = count_x;
-				map->player_y = count_y;
+                player_count++;
+				map->player->x = count_x;
+				map->player->y = count_y;
 			}
 		}
 		count_x = 0;
 	}
-	if (player == 0 || player > 1)
-		return (ft_printf("ERROR wrong amount of players\n"), 1);
-	return (0);
+	if (player_count == 0 || player_count > 1)
+        ft_error("Wrong amount of players\n");
+//	return (0);
 }
 
-int check_collectables(game_map *map)
+void check_collectables(game_map *map)
 {
 	int32_t count_x;
 	int32_t count_y;
@@ -125,7 +128,7 @@ int check_collectables(game_map *map)
 		{
 			if (map->map[count_y][count_x] == 'C')
 			{
-				add_collectable(&map->fish, count_x, count_y);
+				add_collectable(&map->collectables, count_x, count_y);
 				map->collectable_count++;
 			}
 			count_x++;
@@ -134,6 +137,6 @@ int check_collectables(game_map *map)
 		count_y++;
 	}
 	if (map->collectable_count == 0)
-		return (ft_printf("ERROR No collectables\n"), 1);
-	return (0);
+        ft_error("Missing collectables\n");
+//	return (0);
 }

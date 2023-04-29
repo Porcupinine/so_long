@@ -47,16 +47,17 @@ static void map_y_size(char *argv, game_map *map)
 	close(fd);
 }
 
-void add_collectable(collectable **head, int32_t x, int32_t y)
+void add_collectable(collectables_data **head, int32_t x, int32_t y)
 {
-	collectable *fish;
+	collectables_data *fish;
 
-	fish = malloc( 1 * sizeof(collectable));
+	fish = malloc( 1 * sizeof(collectables_data));
 	if (fish == NULL)
-		return ;
+        ft_error("Malloc fail\n");
 	fish->x = x;
 	fish->y = y;
-	fish->status = 0;
+    fish->collectable_img = NULL;
+    fish->collectable_text = NULL;
 	fish->next = *head;
 	*head = fish;
 }
@@ -71,7 +72,7 @@ void get_map(char *argv, game_map *map)
 	map_y_size(argv, map);
 	map->map = malloc(map->height * sizeof(char *));
 	if (map->map == NULL)
-		return;
+        ft_error("Malloc fail\n");
 	fd = open(argv, O_RDONLY);
 	line = get_next_line(fd);
 	while (line != NULL)

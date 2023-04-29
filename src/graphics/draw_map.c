@@ -7,6 +7,12 @@
 #include "../../include/map.h"
 #include "../../include/graphics.h"
 
+//void init_player (game_map *map)
+//{
+////    draw_ground(map->mlx, map->player->x, map->player->y);
+//    draw_player(map, map->player->x, map->player->y);
+//}
+
 void draw_map(game_map *map)
 {
 	int x;
@@ -21,14 +27,12 @@ void draw_map(game_map *map)
 		{
 			if (map->map[y][x] == '1')
 				draw_wall(map->mlx, x, y);
-//			if (map->map[y][x] == '0')
-//				draw_ground(mlx, x, y);
 			if (map->map[y][x] == 'E')
-				draw_exit(map->mlx, x, y);
+                draw_exit(map->mlx, x, y);
 			if (map->map[y][x] == 'C')
-				draw_collectable(map->mlx, x, y);
-			if (map->map[y][x] == 'P')
-				draw_player(map->mlx, x, y);
+                draw_collectable(map, x, y);
+            if (map->map[y][x] == 'P')
+                draw_player(map, x, y);
 			x++;
 		}
 		x = 0;

@@ -11,15 +11,6 @@ void test_fish_status(void)
 	game_map map;
 	get_map("../maps/simple_valid_map.ber", &map);
 	validate_map(&map);
-	while (y < map.height)
-	{
-		while (x < map.width)
-		{
-			if (map.map[y][x] == 'C')
-				ft_printf("status: %d\n", (find_collectable(map.fish, x, y))->status);
-			x++;
-		}
-		x = 0;
-		y++;
-	}
+    print_map(&map);
+    print_map_data(&map);
 }

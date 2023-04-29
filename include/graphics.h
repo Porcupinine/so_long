@@ -11,13 +11,13 @@
 
 //----------------------------------------------------------------load_images.c
 void draw_exit(mlx_t* mlx, int32_t x, int32_t y);
-void draw_collectable(mlx_t* mlx, int32_t x, int32_t y);
+void draw_collectable(game_map *map, int32_t x, int32_t y);
 void draw_ground(mlx_t* mlx, int32_t x, int32_t y);
 void draw_wall(mlx_t* mlx, int32_t x, int32_t y);
-void draw_player(mlx_t* mlx, int32_t x, int32_t y);
-
+void draw_player(game_map *map, int32_t x, int32_t y);
 //-------------------------------------------------------------------draw_map.c
 
 void draw_map(game_map *map);
+void init_player (game_map *map);
 void move_player(mlx_key_data_t keydata, void* param);
 #endif //SO_LONG_GRAPHICS_H

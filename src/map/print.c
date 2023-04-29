@@ -31,19 +31,21 @@ void print_map(game_map *map)
 	ft_printf("\n\n");
 }
 
-void print_map_data(game_map *map, collectable *fish)
+void print_map_data(game_map *map)
 {
 	int count;
+    collectables_data *copy_collectable;
 
+    copy_collectable = map->collectables;
 	count = 0;
 	ft_printf("Map size: %dX%d\n", map->height, map->width);
 	ft_printf("Exit coordinates: (%d, %d)\n", map->exit_x, map->exit_y);
-	ft_printf("Player coordinate: (%d, %d)\n", map->player_x, map->player_y);
+	ft_printf("Player coordinate: (%d, %d)\n", map->player->x, map->player->y);
 	ft_printf("Amount of collectables: %d\n", map->collectable_count);
-	while (fish != NULL)
+	while (copy_collectable != NULL)
 	{
-		ft_printf("fish %d: (%d, %d) status: %d\n", count, fish->x, fish->y, fish->status);
-		fish = fish->next;
+		ft_printf("fish %d: (%d, %d) status: %d\n", count, copy_collectable->x, copy_collectable->y, copy_collectable->collectable_img->enabled);
+        copy_collectable = copy_collectable->next;
 		count++;
 	}
 }
