@@ -15,8 +15,6 @@
 #include "libft.h"
 #include "../../lib42/include/ft_printf.h"
 
-// some can be void and check value on the struct latter
-
 void check_shape(game_map *map)
 {
 	int32_t y;
@@ -33,7 +31,6 @@ void check_shape(game_map *map)
 		x = 0;
 		y++;
 	}
-//	return (0);
 }
 
 void check_borders(game_map *map)
@@ -45,17 +42,18 @@ void check_borders(game_map *map)
 	count_y = 0;
 	while (count_x < (map->width))
 	{
-		if (map->map[0][count_x] != '1'|| map->map[map->height-1][count_x] != '1')
+		if (map->map[0][count_x] != '1'||
+        map->map[map->height-1][count_x] != '1')
             ft_error("Map not surrounded\n");
 		count_x++;
 	}
 	while (count_y < map->height)
 	{
-		if (map->map[count_y][0] != '1' || map->map[count_y][map->width -1] != '1' )
+		if (map->map[count_y][0] != '1' ||
+        map->map[count_y][map->width -1] != '1' )
             ft_error("Map not surrounded\n");
 		count_y++;
 	}
-//	return (0);
 }
 
 void check_exit(game_map *map)
@@ -82,7 +80,6 @@ void check_exit(game_map *map)
 	}
 	if (exit == 0 || exit > 1)
         ft_error("Wrong amount of exits\n");
-//	return (0);
 }
 
 void check_player(game_map *map)
@@ -93,7 +90,7 @@ void check_player(game_map *map)
 
     map->player = malloc(1 * sizeof (player_data));
     if(map->player == NULL)
-        return (1);
+        ft_error("player malloc fail\n");
     player_count = 0;
 	count_x = -1;
 	count_y = -1;
@@ -112,7 +109,6 @@ void check_player(game_map *map)
 	}
 	if (player_count == 0 || player_count > 1)
         ft_error("Wrong amount of players\n");
-//	return (0);
 }
 
 void check_collectables(game_map *map)
@@ -138,5 +134,4 @@ void check_collectables(game_map *map)
 	}
 	if (map->collectable_count == 0)
         ft_error("Missing collectables\n");
-//	return (0);
 }

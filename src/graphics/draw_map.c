@@ -3,15 +3,8 @@
 //
 
 #include "../../MLX42/include/MLX42/MLX42.h"
-#include "../../lib42/include/libft.h"
 #include "../../include/map.h"
 #include "../../include/graphics.h"
-
-//void init_player (game_map *map)
-//{
-////    draw_ground(map->mlx, map->player->x, map->player->y);
-//    draw_player(map, map->player->x, map->player->y);
-//}
 
 void draw_map(game_map *map)
 {

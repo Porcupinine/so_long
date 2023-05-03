@@ -31,10 +31,12 @@ void draw_collectable(game_map *map, int32_t x, int32_t y)
     collectable->collectable_text = mlx_load_png("images/food2.png");
 	if (!collectable->collectable_text)
 		ft_error("Texture fail\n"); //free shit
-    collectable->collectable_img = mlx_texture_to_image(map->mlx, collectable->collectable_text);
+    collectable->collectable_img =
+            mlx_texture_to_image(map->mlx,collectable->collectable_text);
 	if (!collectable->collectable_img)
 		ft_error("Image fail\n"); //free shit
-	if (mlx_image_to_window(map->mlx, collectable->collectable_img, x * SIZE, y * SIZE) < 0)
+	if (mlx_image_to_window(map->mlx,collectable->collectable_img,
+                            x * SIZE, y * SIZE) < 0)
 		ft_error("Fail\n");
 }
 
@@ -73,9 +75,11 @@ void draw_player(game_map *map, int32_t x, int32_t y)
 	map->player->player_text = mlx_load_png("images/dolgr.png");
 	if (!map->player->player_text)
 		ft_error("Texture fail\n"); //free shit
-    map->player->player_img = mlx_texture_to_image(map->mlx, map->player->player_text);
+    map->player->player_img =
+            mlx_texture_to_image(map->mlx, map->player->player_text);
 	if (!map->player->player_img )
 		ft_error("Image fail\n"); //free shit
-    if (mlx_image_to_window(map->mlx, map->player->player_img, x * SIZE, y * SIZE) < 0)
+    if (mlx_image_to_window(map->mlx, map->player->player_img,
+                            x * SIZE, y * SIZE) < 0)
         ft_error("Fail\n");
 }

@@ -10,11 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include <unistd.h>
-#include "get_next_line.h"
 #include "../../lib42//include/ft_printf.h"
-#include "../../lib42/include/libft.h"
 #include "../../include/map.h"
 
 void print_map(game_map *map)
@@ -44,7 +40,9 @@ void print_map_data(game_map *map)
 	ft_printf("Amount of collectables: %d\n", map->collectable_count);
 	while (copy_collectable != NULL)
 	{
-		ft_printf("fish %d: (%d, %d) status: %d\n", count, copy_collectable->x, copy_collectable->y, copy_collectable->collectable_img->enabled);
+		ft_printf("fish %d: (%d, %d) status: %d\n", count,
+                  copy_collectable->x, copy_collectable->y,
+                  copy_collectable->collectable_img->enabled);
         copy_collectable = copy_collectable->next;
 		count++;
 	}
