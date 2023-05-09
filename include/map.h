@@ -17,17 +17,17 @@
 #include <stdint.h>
 #include "../MLX42/include/MLX42/MLX42.h"
 
-typedef struct queue_node
+typedef struct coordinate
 {
     int32_t x;
     int32_t y;
-    struct queue_node *next;
-}queue_node;
+    struct coordinate *next;
+}coordinate;
 
 typedef struct queue
 {
-    queue_node *head;
-    queue_node *tail;
+    coordinate *head;
+    coordinate *tail;
 }queue;
 
 /**
@@ -76,9 +76,12 @@ typedef struct game_map
 	int32_t exit_x;
 	int32_t exit_y;
 	int32_t collectable_count;
+    int32_t collected;
     player_data *player;
     collectables_data *collectables;
     int32_t moves;
+    coordinate *valid_coordinates;
+
 }game_map;
 
 //----------------------------------------------------------------------print.c
@@ -93,6 +96,10 @@ void print_map(game_map *map);
  * @param fish collectable struct
  */
 void print_map_data(game_map *map);
+
+void print_valid_coordinates(game_map *map);
+void print_queue(queue *q);
+
 //-------------------------------------------------------------------make_map.c
 /**
  * read data from .ber and write as a 2D array in game_map, calculates and
@@ -160,5 +167,7 @@ collectables_data *find_collectable(collectables_data *collectables,
  * @param y coordinate y
  */
 void add_collectable(collectables_data **head, int32_t x, int32_t y);
-
+//-----------------------------------------------------------------check_path.c
+int check_valid_list(coordinate *valid_node, int x, int y);
+void map_valid_coordinates(game_map *map);
 #endif //SO_LONG_MAP_H

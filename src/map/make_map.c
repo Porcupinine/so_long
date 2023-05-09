@@ -69,4 +69,5 @@ void get_map(char *argv, game_map *map)
 	close(fd);
 	map_x_size(map);
     map->moves = 0;
+    map->collected = 0;
 }

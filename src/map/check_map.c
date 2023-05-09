@@ -124,7 +124,9 @@ void check_collectables(game_map *map)
 		{
 			if (map->map[count_y][count_x] == 'C')
 			{
-				add_collectable(&map->collectables, count_x, count_y);
+                if (check_valid_list(map->valid_coordinates, count_x, count_y) == 1)
+                    ft_error("no path\n");
+                add_collectable(&map->collectables, count_x, count_y);
 				map->collectable_count++;
 			}
 			count_x++;

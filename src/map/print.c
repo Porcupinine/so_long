@@ -27,6 +27,35 @@ void print_map(game_map *map)
 	ft_printf("\n\n");
 }
 
+void print_valid_coordinates(game_map *map)
+{
+    coordinate *valid_coord;
+    int count;
+
+    count = 0;
+    valid_coord = map->valid_coordinates;
+    while (valid_coord != NULL)
+    {
+        ft_printf("(%d, %d)  ", valid_coord->x, valid_coord->y);
+        valid_coord = valid_coord->next;
+        count++;
+    }
+    ft_printf("count: %d\n", count);
+}
+
+void print_queue(queue *q)
+{
+    coordinate *queue_copy;
+
+    queue_copy = q->head;
+    while (queue_copy != NULL)
+    {
+        ft_printf("(%d, %d)  ", queue_copy->x, queue_copy->y);
+        queue_copy = queue_copy->next;
+    }
+    ft_printf("\n");
+}
+
 void print_map_data(game_map *map)
 {
 	int count;

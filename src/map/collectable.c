@@ -24,7 +24,7 @@ void add_collectable(collectables_data **head, int32_t x, int32_t y)
 collectables_data *find_collectable(collectables_data *collectables,
                                     int32_t x, int32_t y)
 {
-	while (collectables->x != x && collectables->y != y && collectables != NULL)
+	while (collectables != NULL && (collectables->x != x || collectables->y != y))
 		collectables = collectables->next;
 	return (collectables);
 }

@@ -13,35 +13,41 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include "get_next_line.h"
-#include "../../lib42//include/ft_printf.h"
-#include "../../lib42/include/libft.h"
+#include "ft_printf.h"
+#include "libft.h"
 #include "../../include/map.h"
 
-
-//static int	string_malloc_fail(char **arr, int count_arr)
-//{
-//	if (arr[count_arr] == NULL)
-//	{
-//		while (count_arr >= 0)
-//		{
-//			free(arr[count_arr]);
-//			count_arr--;
-//		}
-//		free(arr);
-//		return (0);
-//	}
-//	return (1);
-//}
-
-int free_fail_map(game_map *map, int count)
+void free_map_map(game_map *map)
 {
-	if (map->map[count] == NULL) {
-		while (count >= 0) {
-			free(map->map[count]);
-			count--;
-		}
-		free(map->map);
-		return (0);
-	}
-	return(1);
+    int count;
+
+    count = 0;
+    while (count < map->height)
+    {
+        free(map->map[count]);
+        count++;
+    }
+    free(map->map);
+}
+
+void free_collectables_data(game_map *map)
+{
+    collectables_data *temp;
+    collectables_data *head;
+
+    head = map->collectables;
+    while (head != NULL)
+    {
+        temp = head;
+        mlx_delete_image(map->mlx, (temp)->collectable_img);
+        mlx_delete_texture(temp->collectable_text);
+        head = (head)->next;
+        free(temp);
+    }
+}
+
+void free_game_map(game_map *map)
+{
+    free_map_map(map);
+    free_collectables_data(map);
 }

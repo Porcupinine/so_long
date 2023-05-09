@@ -7,8 +7,8 @@ set(CMAKE_C_STANDARD 90)
 #include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 #conan_basic_setup()
 
-add_compile_options(-fsanitize=address)
-add_link_options(-fsanitize=address)
+add_compile_options(-fsanitize=address -fsanitize=leak)
+add_link_options(-fsanitize=address -fsanitize=leak)
 add_subdirectory(${CMAKE_SOURCE_DIR}/MLX42)
 include_directories(${CMAKE_SOURCE_DIR}/lib42/include)
 
@@ -16,14 +16,14 @@ SET(SOURCES
     src/map/validate_map.c
     include/map.h
     src/map/make_map.c
-    src/map/free_map.c
+        src/utils/free_map.c
     src/map/print.c
         src/map/check_path.c src/graphics/draw_map.c lib42/libft_src/ft_error.c
         src/utils/free.c src/graphics/load_images.c include/graphics.h
         src/map/check_map.c src/move/directions.c src/map/collectable.c
-        )
+        src/map/path.c)
 
-add_executable(so_long main.c ${SOURCES} src/move/move_player.c include/move.h)
+add_executable(so_long main.c ${SOURCES} src/move/move_player.c include/move.h include/utils.h)
 set_target_properties(so_long PROPERTIES LINKER_LANGUAGE C)
 target_link_libraries(so_long ${CMAKE_SOURCE_DIR}/lib42/libft.a mlx42)
 

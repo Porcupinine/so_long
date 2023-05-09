@@ -7,20 +7,21 @@
 #include "../../include/map.h"
 #include "ft_printf.h"
 
-static void checks_after_move(game_map *map, char c) {
-
+static void checks_after_move(game_map *map, char c)
+{
     if (c == 'C')
     {
         map->map[map->player->y][map->player->x] = 'C';
         find_collectable(map->collectables, map->player->x,
                          map->player->y)->collectable_img->enabled = false;
-        map->collectable_count--;
+        map->collected++;
     }
-    map->map[map->player->y][map->player->x] = 'P';
-    if (c == 'E' && map->collectable_count == 0)
+    if (c == 'E' && map->collectable_count == map->collected)
         exit(0);
     map->moves++;
     ft_printf("Movements: %d\n", map->moves);
+    ft_printf("cloctaveis %d/%d\n", map->collected, map->collectable_count);
+//    print_map_data(map);
 }
 
 void move_up(game_map *map)
