@@ -18,7 +18,7 @@ int32_t	main(void)
 {
 	game_map  map;
 
-	get_map("maps/simple_valid_map.ber", &map);
+	get_map("maps/verry_simple_map.ber", &map);
 //    print_map(&map);
 	validate_map(&map);
 	map.mlx = mlx_init(map.width * SIZE, map.height * SIZE, "Test", true);

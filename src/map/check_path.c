@@ -17,6 +17,7 @@ void enqueue (queue *q, int x, int y)
     q->tail = new;
     if(q->head == NULL)
         q->head = new;
+//    print_queue(q);
 }
 
 void dequeue (queue *q)
@@ -28,8 +29,7 @@ void dequeue (queue *q)
     q->head = q->head->next;
     free (temp);
     if(q->head == NULL)
-        q->tail == NULL;
-
+        q->tail = NULL;
 }
 
 int check_valid_list(coordinate *valid_node, int x, int y)
@@ -57,7 +57,7 @@ int check_queue(queue *q, int x, int y)
     return (1);
 }
 
-void add_coordinate(coordinate **head, int x, int y)
+void add_coordinate(coordinate **head, int x, int y, game_map *map)
 {
     coordinate *new;
     new = malloc(sizeof (coordinate));
@@ -67,6 +67,7 @@ void add_coordinate(coordinate **head, int x, int y)
     new->x = x;
     new->next = *head;
     *head = new;
+//    print_valid_coordinates(map);
 }
 
 void map_valid_coordinates(game_map *map)
@@ -104,22 +105,24 @@ void map_valid_coordinates(game_map *map)
             enqueue(q, count_x, count_y+1);
         if (map->map[count_y][count_x+1] != '1' &&
         check_valid_list(map->valid_coordinates, count_x+1, count_y) != 0 &&
-        check_queue(q, count_x+1, count_y) != 0)
+                check_queue(q, count_x+1, count_y) != 0)
         {
-            add_coordinate(&map->valid_coordinates, count_x+1, count_y);
-            print_valid_coordinates(map);
-            print_queue(q);
+            add_coordinate(&map->valid_coordinates, count_x+1, count_y, map);
+//            print_valid_coordinates(map);
+//            print_queue(q);
             count_x++;
         }
         else if (map->map[count_y][count_x+1] == '1' ||
         check_valid_list(map->valid_coordinates, count_x+1, count_y) == 1 ||
                 check_queue(q, count_x+1, count_y) == 1)
         {
-            if (q != NULL)
+            if (q->head != NULL)
             {
                 count_y = q->head->y;
                 count_x = q->head->x;
                 dequeue(q);
+                add_coordinate(&map->valid_coordinates, count_x, count_y, map);
+
             }
             else
                 break;

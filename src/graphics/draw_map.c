@@ -25,7 +25,10 @@ void draw_map(game_map *map)
 			if (map->map[y][x] == 'C')
                 draw_collectable(map, x, y);
             if (map->map[y][x] == 'P')
+            {
                 draw_player(map, x, y);
+                map->map[y][x] = '0';
+            }
 			x++;
 		}
 		x = 0;

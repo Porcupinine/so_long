@@ -8,7 +8,6 @@ void validate_map(game_map *map)
 	check_shape(map);
     check_player(map);
     map_valid_coordinates(map);
-    print_valid_coordinates(map);
     check_collectables(map);
     check_exit(map);
 }

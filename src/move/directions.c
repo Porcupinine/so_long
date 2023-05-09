@@ -12,12 +12,14 @@ static void checks_after_move(game_map *map, char c)
     if (c == 'C')
     {
         map->map[map->player->y][map->player->x] = 'C';
+        if (find_collectable(map->collectables, map->player->x,
+                             map->player->y)->collectable_img->enabled == true)
+            map->collected++;
         find_collectable(map->collectables, map->player->x,
                          map->player->y)->collectable_img->enabled = false;
-        map->collected++;
     }
     if (c == 'E' && map->collectable_count == map->collected)
-        exit(0);
+            exit(0);
     map->moves++;
     ft_printf("Movements: %d\n", map->moves);
     ft_printf("cloctaveis %d/%d\n", map->collected, map->collectable_count);
@@ -30,7 +32,6 @@ void move_up(game_map *map)
 //    ft_printf("%c\n", c);
 	if (c == '0' || c == 'C' || c == 'E')
 	{
-        map->map[map->player->y][map->player->x] = '0';
 		map->player->player_img->instances[0].y -= 65;
         map->player->y--;
         checks_after_move(map, c);
@@ -44,7 +45,6 @@ void move_left(game_map *map)
 //    ft_printf("%c\n", c);
 	if (c == '0' || c == 'C' || c == 'E')
 	{
-		map->map[map->player->y][map->player->x] = '0';
         map->player->player_img->instances[0].x -= 65;
         map->player->x--;
         checks_after_move(map, c);
@@ -58,7 +58,6 @@ void move_right(game_map *map)
 //    ft_printf("%c\n", c);
 	if (c == '0' || c == 'C' || c == 'E')
 	{
-		map->map[map->player->y][map->player->x] = '0';
         map->player->player_img->instances[0].x += 65;
         map->player->x++;
         checks_after_move(map, c);
@@ -72,7 +71,6 @@ void move_down(game_map *map)
 //    ft_printf("%c\n", c);
 	if (c == '0' || c == 'C' || c == 'E')
 	{
-		map->map[map->player->y][map->player->x] = '0';
         map->player->player_img->instances[0].y += 65;
         map->player->y++;
         checks_after_move(map, c);

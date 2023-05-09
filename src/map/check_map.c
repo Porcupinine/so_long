@@ -71,6 +71,8 @@ void check_exit(game_map *map)
 		{
 			if (map->map[count_y][count_x] == 'E')
 			{
+                if (check_valid_list(map->valid_coordinates, count_x, count_y) == 1)
+                    ft_error("no path\n");
 				map->exit_x = count_x;
 				map->exit_y = count_y;
 				exit++;
