@@ -2,7 +2,7 @@
 // Created by laura on 24/04/23.
 //
 
-#include <malloc.h>
+#include <stdlib.h>
 #include "../../include/map.h"
 #include "libft.h"
 
@@ -24,7 +24,8 @@ void add_collectable(collectables_data **head, int32_t x, int32_t y)
 collectables_data *find_collectable(collectables_data *collectables,
                                     int32_t x, int32_t y)
 {
-	while (collectables != NULL && (collectables->x != x || collectables->y != y))
+	while (collectables != NULL && (collectables->x != x ||
+    collectables->y != y))
 		collectables = collectables->next;
 	return (collectables);
 }

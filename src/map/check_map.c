@@ -27,7 +27,7 @@ void check_shape(game_map *map)
 		while (map->map[y][x] != '\n' && map->map[y][x] != '\0')
 			x++;
 		if (x != map->width)
-            ft_error("Map is not rectangular\n");
+            ft_error("Error\nMap is not rectangular\n");
 		x = 0;
 		y++;
 	}
@@ -44,14 +44,14 @@ void check_borders(game_map *map)
 	{
 		if (map->map[0][count_x] != '1'||
         map->map[map->height-1][count_x] != '1')
-            ft_error("Map not surrounded\n");
+            ft_error("Error\nMap not surrounded\n");
 		count_x++;
 	}
 	while (count_y < map->height)
 	{
 		if (map->map[count_y][0] != '1' ||
         map->map[count_y][map->width -1] != '1' )
-            ft_error("Map not surrounded\n");
+            ft_error("Error\nMap not surrounded\n");
 		count_y++;
 	}
 }
@@ -72,7 +72,7 @@ void check_exit(game_map *map)
 			if (map->map[count_y][count_x] == 'E')
 			{
                 if (check_valid_list(map->valid_coordinates, count_x, count_y) == 1)
-                    ft_error("no path\n");
+                    ft_error("Error\nNo valid path to exit\n");
 				map->exit_x = count_x;
 				map->exit_y = count_y;
 				exit++;
@@ -81,7 +81,7 @@ void check_exit(game_map *map)
 		count_x = 0;
 	}
 	if (exit == 0 || exit > 1)
-        ft_error("Wrong amount of exits\n");
+        ft_error("Error\nWrong amount of exits\n");
 }
 
 void check_player(game_map *map)
@@ -92,7 +92,7 @@ void check_player(game_map *map)
 
     map->player = malloc(1 * sizeof (player_data));
     if(map->player == NULL)
-        ft_error("player malloc fail\n");
+        ft_error("Error\nPlayer malloc fail\n");
     player_count = 0;
 	count_x = -1;
 	count_y = -1;
@@ -110,7 +110,7 @@ void check_player(game_map *map)
 		count_x = 0;
 	}
 	if (player_count == 0 || player_count > 1)
-        ft_error("Wrong amount of players\n");
+        ft_error("Error\nWrong amount of players\n");
 }
 
 void check_collectables(game_map *map)
@@ -127,7 +127,7 @@ void check_collectables(game_map *map)
 			if (map->map[count_y][count_x] == 'C')
 			{
                 if (check_valid_list(map->valid_coordinates, count_x, count_y) == 1)
-                    ft_error("no path\n");
+                    ft_error("Error\nNo valid path to collectable\n");
                 add_collectable(&map->collectables, count_x, count_y);
 				map->collectable_count++;
 			}
@@ -137,5 +137,5 @@ void check_collectables(game_map *map)
 		count_y++;
 	}
 	if (map->collectable_count == 0)
-        ft_error("Missing collectables\n");
+        ft_error("Error\nMissing collectables\n");
 }

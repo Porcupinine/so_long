@@ -22,7 +22,7 @@ static void checks_after_move(game_map *map, char c)
             exit(0);
     map->moves++;
     ft_printf("Movements: %d\n", map->moves);
-    ft_printf("cloctaveis %d/%d\n", map->collected, map->collectable_count);
+//    ft_printf("cloctaveis %d/%d\n", map->collected, map->collectable_count);
 //    print_map_data(map);
 }
 

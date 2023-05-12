@@ -1,36 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   main.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: lpraca-l <marvin@codam.nl>                   +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/05/12 14:34:12 by lpraca-l      #+#    #+#                 */
+/*   Updated: 2023/05/12 14:34:26 by lpraca-l      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-//#include <error.h>
 #include "MLX42/include/MLX42/MLX42.h"
-#include "MLX42/include/MLX42/MLX42_Int.h"
 #include "include/graphics.h"
 #include "libft.h"
 #include "include/move.h"
-#include "ft_printf.h"
 
-#define WIDTH 256
-#define HEIGHT 256
 #define SIZE 65
 
-int32_t	main(void)
+int	main(int argc, char **argv)
 {
-	game_map  map;
+    game_map  map;
 
-	get_map("maps/verry_simple_map.ber", &map);
-//    print_map(&map);
+    if (argc != 2)
+        ft_error("Error\nWrong amount of arguments\n");
+	get_map(argv[1], &map);
 	validate_map(&map);
-	map.mlx = mlx_init(map.width * SIZE, map.height * SIZE, "Test", true);
+	map.mlx = mlx_init(map.width * SIZE, map.height * SIZE,
+                       "Boto cor-de-rosa", true);
 	if (!map.mlx)
-		ft_error("MLX42 init fail\n");
+		ft_error("Error\nMLX42 init fail\n");
 	draw_map(&map);
 	mlx_key_hook(map.mlx, &move_player, &map);
 	mlx_loop(map.mlx);
-
-//	Optional, terminate will clean up any leftovers, this is just to demonstrate.
-//	mlx_delete_image(mlx, img);
-//	mlx_delete_texture(texture);
-	mlx_terminate(map.mlx);
 	return (EXIT_SUCCESS);
 }

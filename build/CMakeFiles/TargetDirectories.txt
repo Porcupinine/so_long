@@ -1,0 +1,7 @@
+/Users/lpraca-l/Documents/CodamGit/so_long/build/CMakeFiles/so_long.dir
+/Users/lpraca-l/Documents/CodamGit/so_long/build/CMakeFiles/test_so_long.dir
+/Users/lpraca-l/Documents/CodamGit/so_long/build/CMakeFiles/edit_cache.dir
+/Users/lpraca-l/Documents/CodamGit/so_long/build/CMakeFiles/rebuild_cache.dir
+/Users/lpraca-l/Documents/CodamGit/so_long/build/MLX42/CMakeFiles/mlx42.dir
+/Users/lpraca-l/Documents/CodamGit/so_long/build/MLX42/CMakeFiles/edit_cache.dir
+/Users/lpraca-l/Documents/CodamGit/so_long/build/MLX42/CMakeFiles/rebuild_cache.dir

@@ -59,6 +59,8 @@ void get_map(char *argv, game_map *map)
 	if (map->map == NULL)
         ft_error("Malloc fail\n");
 	fd = open(argv, O_RDONLY);
+    if (fd == -1)
+        ft_error("Fail to read file\n");
 	line = get_next_line(fd);
 	while (line != NULL)
 	{

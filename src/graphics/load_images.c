@@ -28,7 +28,7 @@ void draw_collectable(game_map *map, int32_t x, int32_t y)
     collectables_data *collectable;
 
     collectable = find_collectable(map->collectables, x, y);
-    collectable->collectable_text = mlx_load_png("images/food2.png");
+    collectable->collectable_text = mlx_load_png("images/lady.png");
 	if (!collectable->collectable_text)
 		ft_error("Texture fail\n"); //free shit
     collectable->collectable_img =
@@ -45,7 +45,7 @@ void draw_ground(mlx_t* mlx, int32_t x, int32_t y)
 	mlx_texture_t* texture_ground;
 	mlx_image_t* img_ground;
 
-	texture_ground = mlx_load_png("images/bg2.png");
+	texture_ground = mlx_load_png("images/bg4.png");
 	if (!texture_ground)
 		ft_error("Texture fail\n"); //free shit
 	img_ground = mlx_texture_to_image(mlx, texture_ground);
@@ -72,6 +72,7 @@ void draw_exit(mlx_t* mlx, int32_t x, int32_t y)
 
 void draw_player(game_map *map, int32_t x, int32_t y)
 {
+    map->map[y][x] = '0';
 	map->player->player_text = mlx_load_png("images/dolgr.png");
 	if (!map->player->player_text)
 		ft_error("Texture fail\n"); //free shit
