@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 
     if (argc != 2)
         ft_error("Error\nWrong amount of arguments\n");
-	get_map(argv[1], &map);
+    get_map(argv[1], &map);
 	validate_map(&map);
 	map.mlx = mlx_init(map.width * SIZE, map.height * SIZE,
                        "Boto cor-de-rosa", true);

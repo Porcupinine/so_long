@@ -26,7 +26,7 @@ int	check_valid_list(t_coordinate *valid_node, int x, int y)
 	return (1);
 }
 
-static void	add_coordinate(t_coordinate **head, int x, int y, t_game_map *map)
+static void	add_coordinate(t_coordinate **head, int x, int y, t_game_map *)
 {
 	t_coordinate	*new;
 

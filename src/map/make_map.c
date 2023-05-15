@@ -19,7 +19,6 @@
 
 static void	map_x_size(t_game_map *map)
 {
-	char	*line;
 	int		count;
 
 	count = 0;
