@@ -3,8 +3,8 @@ NAME	:= so_long
 
 
 #-------------------------------------------------------------------------Flags
-CFLAGS	:+= -Wextra -Wall -Werror -Wunreachable-code -Ofast
-ASANFLAGS :+= -fsanitize=address -fsanitize=leak
+CFLAGS	+= -Wextra -Wall -Werror -Wunreachable-code -Ofast
+ASANFLAGS += -fsanitize=address -fsanitize=leak
 
 
 #----------------------------------------------------------------Libraries path
@@ -31,9 +31,13 @@ SRC     := src/map/validate_map.c src/map/make_map.c src/utils/free_map.c \
 OBJS	:= ${SRCS:.c=.o}
 
 
+#---------------------------------------------------------------------Directory
+OBJDIR := $(addprefix $(OBJDIR),$(OBJS))
+
 #-------------------------------------------------------------------------Rules
 all: libmlx $(NAME))
 
+so_long: $()
 libmlx:
 	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 

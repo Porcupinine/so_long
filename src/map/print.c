@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   make_map.c                                         :+:    :+:            */
+/*   print.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: laura <laura@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 10:25:02 by laura         #+#    #+#                 */
-/*   Updated: 2023/03/31 10:25:02 by laura         ########   odam.nl         */
+/*   Updated: 2023/05/15 11:29:00 by lpraca-l      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../lib42//include/ft_printf.h"
+#include "../../lib42/include/ft_printf.h"
 #include "../../include/map.h"
 
-void print_map(game_map *map)
+void	print_map(t_game_map *map)
 {
-	int y;
+	int	y;
 
 	y = 0;
 	ft_printf("(%d, %d)\n", map->width, map->height);
@@ -27,41 +27,41 @@ void print_map(game_map *map)
 	ft_printf("\n\n");
 }
 
-void print_valid_coordinates(game_map *map)
+void	print_valid_coordinates(t_game_map *map)
 {
-    coordinate *valid_coord;
-    int count;
+	t_coordinate	*valid_coord;
+	int			count;
 
-    count = 0;
-    valid_coord = map->valid_coordinates;
-    while (valid_coord != NULL)
-    {
-        ft_printf("(%d, %d)  ", valid_coord->x, valid_coord->y);
-        valid_coord = valid_coord->next;
-        count++;
-    }
-    ft_printf("count: %d\n", count);
+	count = 0;
+	valid_coord = map->valid_coordinates;
+	while (valid_coord != NULL)
+	{
+		ft_printf("(%d, %d)  ", valid_coord->x, valid_coord->y);
+		valid_coord = valid_coord->next;
+		count++;
+	}
+	ft_printf("count: %d\n", count);
 }
 
-void print_queue(queue *q)
+void	print_queue(t_queue *q)
 {
-    coordinate *queue_copy;
+	t_coordinate	*queue_copy;
 
-    queue_copy = q->head;
-    while (queue_copy != NULL)
-    {
-        ft_printf("(%d, %d)  ", queue_copy->x, queue_copy->y);
-        queue_copy = queue_copy->next;
-    }
-    ft_printf("\n");
+	queue_copy = q->head;
+	while (queue_copy != NULL)
+	{
+		ft_printf("(%d, %d)  ", queue_copy->x, queue_copy->y);
+		queue_copy = queue_copy->next;
+	}
+	ft_printf("\n");
 }
 
-void print_map_data(game_map *map)
+void	print_map_data(t_game_map *map)
 {
-	int count;
-    collectables_data *copy_collectable;
+	int					count;
+	t_collectables_data	*copy_collectable;
 
-    copy_collectable = map->collectables;
+	copy_collectable = map->collectables;
 	count = 0;
 	ft_printf("Map size: %dX%d\n", map->height, map->width);
 	ft_printf("Exit coordinates: (%d, %d)\n", map->exit_x, map->exit_y);
@@ -70,9 +70,9 @@ void print_map_data(game_map *map)
 	while (copy_collectable != NULL)
 	{
 		ft_printf("fish %d: (%d, %d) status: %d\n", count,
-                  copy_collectable->x, copy_collectable->y,
-                  copy_collectable->collectable_img->enabled);
-        copy_collectable = copy_collectable->next;
+			copy_collectable->x, copy_collectable->y,
+			copy_collectable->collectable_img->enabled);
+		copy_collectable = copy_collectable->next;
 		count++;
 	}
 }

@@ -6,7 +6,7 @@
 
 void test_map_data(void)
 {
-	game_map map;
+	t_game_map map;
 
 	get_map("../maps/minimal_map.ber", &map);
 	check_player(&map);

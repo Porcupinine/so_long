@@ -19,7 +19,7 @@ SET(SOURCES
         src/utils/free_map.c
     src/map/print.c
         src/map/check_path.c src/graphics/draw_map.c lib42/libft_src/ft_error.c
-        src/utils/free.c src/graphics/load_images.c include/graphics.h
+        src/graphics/load_images.c include/graphics.h
         src/map/check_map.c src/move/directions.c src/map/collectable.c
         src/utils/queue_functions.c)
 

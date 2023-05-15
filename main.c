@@ -20,7 +20,7 @@
 
 int	main(int argc, char **argv)
 {
-    game_map  map;
+    t_game_map  map;
 
     if (argc != 2)
         ft_error("Error\nWrong amount of arguments\n");

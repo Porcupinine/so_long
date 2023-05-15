@@ -6,10 +6,10 @@
 
 int test_read_map(char **argv)
 {
-	game_map map;
-	game_map map1;
-	game_map map2;
-	game_map map3;
+	t_game_map map;
+	t_game_map map1;
+	t_game_map map2;
+	t_game_map map3;
 
 	ft_printf("minimal_map.ber\n");
 	get_map("../maps/minimal_map.ber", &map);

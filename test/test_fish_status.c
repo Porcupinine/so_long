@@ -8,7 +8,7 @@ void test_fish_status(void)
 {
 	int y = 0;
 	int x = 0;
-	game_map map;
+	t_game_map map;
 	get_map("../maps/simple_valid_map.ber", &map);
 	validate_map(&map);
     print_map(&map);
