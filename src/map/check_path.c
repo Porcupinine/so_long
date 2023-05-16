@@ -26,7 +26,7 @@ int	check_valid_list(t_coordinate *valid_node, int x, int y)
 	return (1);
 }
 
-static void	add_coordinate(t_coordinate **head, int x, int y, t_game_map *)
+static void	add_coordinate(t_coordinate **head, int x, int y)
 {
 	t_coordinate	*new;
 
@@ -57,7 +57,7 @@ static int	check_sides(t_game_map *map, t_queue *q, int32_t x, int32_t y)
 		check_valid_list(map->valid_coordinates, x + 1, y) != 0 &&
 		check_queue(q, x + 1, y) != 0)
 	{
-		add_coordinate(&map->valid_coordinates, x + 1, y, map);
+		add_coordinate(&map->valid_coordinates, x + 1, y);
 		return (1);
 	}
 	return (0);
@@ -101,7 +101,7 @@ void	map_valid_coordinates(t_game_map *map)
 				count_y = q->head->y;
 				count_x = q->head->x;
 				dequeue(q);
-				add_coordinate(&map->valid_coordinates, count_x, count_y, map);
+				add_coordinate(&map->valid_coordinates, count_x, count_y);
 			}
 			else
 				break ;

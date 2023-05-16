@@ -16,7 +16,8 @@ LIB42   := ./lib42
 HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIB42)/include
 
 #---------------------------------------------------------------------Libraries
-LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm $(LIB42)/libft.a
+LIBS	:= $(LIBMLX)/build/libmlx42.a -lglfw3 -framework Cocoa \
+			-framework OpenGL -framework IOKit $(LIB42)/libft.a
 
 #------------------------------------------------------------------------Source
 SRC     := src/map/validate_map.c src/map/make_map.c src/utils/free_map.c \
