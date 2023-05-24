@@ -23,7 +23,7 @@ SET(SOURCES
         src/map/check_map.c src/move/directions.c src/map/collectable.c
         src/utils/queue_functions.c)
 
-add_executable(so_long main.c ${SOURCES} src/move/move_player.c include/move.h include/utils.h src/utils/queue_functions.c)
+add_executable(so_long main.c ${SOURCES} src/move/move_player.c include/move.h include/utils.h src/utils/queue_functions.c src/graphics/home.c)
 set_target_properties(so_long PROPERTIES LINKER_LANGUAGE C)
 target_link_libraries(so_long ${CMAKE_SOURCE_DIR}/lib42/libft.a mlx42)
 

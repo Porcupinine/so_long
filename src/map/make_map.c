@@ -6,7 +6,7 @@
 /*   By: laura <laura@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 10:25:02 by laura         #+#    #+#                 */
-/*   Updated: 2023/05/15 11:27:52 by lpraca-l      ########   odam.nl         */
+/*   Updated: 2023/05/24 09:51:46 by lpraca-l      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static void	map_y_size(char *argv, t_game_map *map)
 
 	count = 0;
 	fd = open(argv, O_RDONLY);
+	if (fd == -1)
+		ft_error("Fail to read file\n");
 	line = get_next_line(fd);
 	while (line != NULL)
 	{

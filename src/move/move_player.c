@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include "MLX42/MLX42.h"
 #include "../../include/move.h"
+#include "../../include/graphics.h"
 
 void	move_player(mlx_key_data_t keydata, void *param)
 {

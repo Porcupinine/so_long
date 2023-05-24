@@ -6,7 +6,7 @@
 /*   By: lpraca-l <lpraca-l@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/15 11:25:47 by lpraca-l      #+#    #+#                 */
-/*   Updated: 2023/05/15 11:26:48 by lpraca-l      ########   odam.nl         */
+/*   Updated: 2023/05/24 09:52:04 by lpraca-l      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	add_collectable(t_collectables_data **head, int32_t x, int32_t y)
 	*head = fish;
 }
 
-t_collectables_data	*find_collectable(t_collectables_data *collectables,
-                                         int32_t x, int32_t y)
+t_collectables_data	*find_collectable(t_collectables_data *collectables, \
+int32_t x, int32_t y)
 {
 	while (collectables != NULL && (collectables->x != x
 			|| collectables->y != y))

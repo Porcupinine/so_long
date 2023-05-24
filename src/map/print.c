@@ -6,7 +6,7 @@
 /*   By: laura <laura@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 10:25:02 by laura         #+#    #+#                 */
-/*   Updated: 2023/05/15 11:29:00 by lpraca-l      ########   odam.nl         */
+/*   Updated: 2023/05/24 10:06:39 by lpraca-l      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	print_map(t_game_map *map)
 void	print_valid_coordinates(t_game_map *map)
 {
 	t_coordinate	*valid_coord;
-	int			count;
+	int				count;
 
 	count = 0;
 	valid_coord = map->valid_coordinates;
